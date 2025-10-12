@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arquitetura Proativa de Otimização Wi-Fi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      background: #0b0b0b;
+      color: #fff;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    header {
+      text-align: center;
+      padding: 60px 20px 40px;
+    }
+    header h1 {
+      font-size: 2.2rem;
+      color: #FFD700;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    header img {
+      max-width: 250px;
+      margin: 30px 0;
+    }
+    section {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 20px;
+      text-align: center;
+    }
+    .form-section input[type="email"] {
+      width: 90%;
+      max-width: 500px;
+      padding: 15px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      margin: 20px 0;
+    }
+    .cta-btn {
+      display: inline-block;
+      background: linear-gradient(90deg, #FFD700, #ffae00);
+      color: #0b0b0b;
+      font-weight: 700;
+      padding: 15px 40px;
+      border-radius: 10px;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: 0.3s;
+    }
+    .cta-btn:hover {
+      background: #ffcc00;
+      transform: scale(1.05);
+    }
+    .kit-section {
+      background: #111;
+      padding: 50px 20px;
+      margin-top: 50px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 30px;
+    }
+    th, td {
+      border: 1px solid #333;
+      padding: 12px;
+    }
+    th {
+      background: #222;
+      color: #FFD700;
+    }
+    footer {
+      text-align: center;
+      padding: 30px;
+      background: #080808;
+      color: #999;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>ACESSO LIBERADO: A ARQUITETURA PROATIVA DE OTIMIZAÇÃO Wi-Fi</h1>
+    <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYWRsdjU4bTVmYWQzYmpyZ2lsazN2bTdnd3NjYTh2a3hmb3U1eTF3YiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/NsBkn6W9Kj5EA/giphy.gif" alt="gráfico subindo">
+    <p>Você está a um passo de entender o segredo das redes que nunca falham.</p>
+    <p>Se você comentou "WI-FI" e repostou nossa publicação, você provou que está pronto para o 1% de gerenciamento inteligente.</p>
+    <p>O que a maioria das empresas paga para ter, você está recebendo primeiro: a lógica por trás da queda de 95% nos chamados de suporte por lentidão.</p>
+  </header>
+
+  <section class="form-section">
+    <h2>🔒 Desbloqueie o Conteúdo Exclusivo Agora:</h2>
+    <p>O Repositório e o Guia Rápido serão enviados para o seu e-mail imediatamente após o cadastro.</p>
+
+    <form id="lead-form" action="https://formspree.io/f/xnnggkna" method="POST">
+      <input type="email" name="email" placeholder="Seu melhor e-mail" required>
+      <input type="hidden" name="_subject" value="Novo lead: Arquitetura Wi‑Fi Pro">
+      <br>
+      <button type="submit" class="cta-btn">Quero o acesso completo à arquitetura!</button>
+      <p id="form-note" style="font-size:0.9rem;color:#aaa;margin-top:10px;">Ao enviar, você receberá o link do repositório e o PDF por e‑mail.</p>
+    </form>
+
+    <script>
+      // ---- CONFIGURE AQUI seus links reais ----
+      const REPO_URL = "https://github.com/gustavo89587/wifi-pro"; // 👉 troque pelo repo correto
+      const PDF_URL  = "https://raw.githubusercontent.com/gustavo89587/wifi-pro/refs/heads/main/docs/guia-rapido-wifi-pro.pdf"; // 👉 troque se necessário
+      const CALL_URL = "https://calendly.com"; // 👉 opcional
+      // ----------------------------------------
+
+      (function(){
+        const form = document.getElementById('lead-form');
+        if(!form) return;
+        const note = document.getElementById('form-note');
+
+        form.addEventListener('submit', async function(e){
+          e.preventDefault();
+          const btn = form.querySelector('button');
+          btn.disabled = true; btn.textContent = 'Enviando...';
+          const data = new FormData(form);
+          try {
+            const res = await fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' }});
+            let payload = null; try { payload = await res.json(); } catch(_){ }
+            if (res.ok) {
+              form.outerHTML = `
+                <div class="success-card" style="background:#0f0f0f;border:1px solid #1f1f1f;border-radius:12px;padding:24px;">
+                  <h3 style="margin-top:0;color:#FFD700;">✅ Acesso enviado para o seu e‑mail!</h3>
+                  <p>Enquanto isso, você já pode abrir os materiais abaixo:</p>
+                  <p style="margin:.6rem 0"><a href="${REPO_URL}" target="_blank" style="color:#FFD700;text-decoration:none;">🔗 Repositório no GitHub</a></p>
+                  <p style="margin:.6rem 0"><a href="${PDF_URL}" target="_blank" style="color:#FFD700;text-decoration:none;">📄 Guia de Aplicação (PDF)</a></p>
+                  ${CALL_URL ? `<p style=\"margin:.6rem 0\"><a href=\"${CALL_URL}\" target=\"_blank\" style=\"color:#FFD700;text-decoration:none;\">📅 Agendar call de 15 minutos</a></p>` : ''}
+                  <p style="color:#aaa;font-size:.9rem;margin-top:12px;">Dica: dê ⭐ no repositório para acompanhar atualizações.</p>
+                </div>`;
+            } else {
+              btn.disabled = false; btn.textContent = 'Quero o acesso completo à arquitetura!';
+              let msg = 'Não foi possível enviar. Tente novamente em instantes.';
+              if (payload && payload.errors && payload.errors.length) msg = payload.errors.map(e => e.message).join(' | ');
+              if (res.status === 403) msg = '403 - Confirme o formulário no Formspree e verifique o endpoint.';
+              if (res.status === 404) msg = '404 - Endpoint do Formspree inválido.';
+              if (note) { note.textContent = msg; note.style.color = '#ff6868'; }
+              console.error('Form error', res.status, payload);
+            }
+          } catch (err) {
+            btn.disabled = false; btn.textContent = 'Quero o acesso completo à arquitetura!';
+            if (note) { note.textContent = 'Falha de rede. Verifique sua conexão e tente novamente.'; note.style.color = '#ff6868'; }
+            console.error('Network error', err);
+          }
+        });
+
+        // Verificação visual rápida dos links (mostra uma badge se estiverem configurados)
+        window.addEventListener('DOMContentLoaded', () => {
+          const okRepo = REPO_URL && REPO_URL.startsWith('http');
+          const okPdf  = PDF_URL && PDF_URL.startsWith('http');
+          const badge = document.createElement('div');
+          badge.style.cssText = 'margin-top:10px;font-size:.9rem;color:#aaa';
+          badge.innerHTML = `Links: Repo ${okRepo ? '✅' : '❌'} • PDF ${okPdf ? '✅' : '❌'}`;
+          form.appendChild(badge);
+        });
+      })();
+    </script>
+  </section>
+
+  <section class="kit-section">
+    <h2>🎁 Seu Kit de Diagnóstico Proativo Contém:</h2>
+    <table>
+      <tr>
+        <th>O Item</th>
+        <th>O Valor Real</th>
+      </tr>
+      <tr>
+        <td>Acesso ao Repositório no GitHub</td>
+        <td>A prova de conceito — veja as funções de otimização e a arquitetura que reduziram a latência de 120ms para 8ms.</td>
+      </tr>
+      <tr>
+        <td>Guia de Aplicação (PDF Rápido)</td>
+        <td>Tradução do código em valor de negócio. Aprenda os 3 princípios de gerenciamento que separam o Wi-Fi médio do de alta performance.</td>
+      </tr>
+      <tr>
+        <td>Convite Exclusivo para Conversa</td>
+        <td>Agende uma call de 15 minutos para entender seu problema e te mostrar o futuro do SaaS.</td>
+      </tr>
+    </table>
+  </section>
+
+  <footer>
+    <p>© 2025 Gustavo Okamoto — Okamoto Security Labs | Wi-Fi Pro</p>
+  </footer>
+
+</body>
+</html>

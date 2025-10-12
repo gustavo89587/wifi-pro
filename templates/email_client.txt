@@ -1,0 +1,12 @@
+Assunto: 🎉 Seu Acesso à Arquitetura Wi-Fi Pro — Protocolo ${PROTOCOL}
+
+Olá ${CLIENT_NAME},
+
+Recebemos seu pedido. Protocolo: ${PROTOCOL}
+Categoria: ${CATEGORY}
+Resumo: ${SUMMARY}
+
+Em breve você receberá os links do repositório e o Guia Rápido.
+
+Att,
+${COMPANY_NAME}

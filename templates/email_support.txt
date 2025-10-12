@@ -1,0 +1,7 @@
+Assunto: [${PROTOCOL}] Novo chamado — ${CLIENT_NAME}
+
+Protocolo: ${PROTOCOL}
+Cliente: ${CLIENT_NAME} <${CLIENT_EMAIL}>
+Categoria: ${CATEGORY}
+Resumo: ${SUMMARY}
+Criado em: ${CREATED_AT}

@@ -1,0 +1,3 @@
+rich
+speedtest-cli
+python-dotenv
