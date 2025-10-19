@@ -1,202 +1,314 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Arquitetura Proativa de Otimização Wi-Fi</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="icon" href="https://raw.githubusercontent.com/gustavo89587/wifi-pro/main/docs/favicon.png">
-  <meta property="og:title" content="Arquitetura Proativa de Otimização Wi-Fi">
-  <meta property="og:description" content="Como reduzimos chamados por lentidão em até 95%.">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="https://raw.githubusercontent.com/gustavo89587/wifi-pro/main/docs/cover.jpg">
-
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>WIFI PRO — Okamoto Security Labs</title>
+  <meta name="description" content="Chega de Wi‑Fi lento. O WIFI PRO otimiza velocidade, estabilidade e segurança da sua rede com a expertise Okamoto Security Labs." />
+  <meta property="og:title" content="WIFI PRO — Okamoto Security Labs" />
+  <meta property="og:description" content="Chega de Wi‑Fi lento. Conexão impecável com estabilidade e segurança de nível profissional." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#05ff7b" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Orbitron:wght@600;800&display=swap" rel="stylesheet">
   <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      margin: 0;
-      background: #0b0b0b;
-      color: #fff;
-      line-height: 1.6;
-      overflow-x: hidden;
+    :root{
+      --bg:#0a0d0f;            /* preto vivo */
+      --bg-2:#0f1216;          /* variação */
+      --text:#e6f7ef;          /* texto */
+      --muted:#9bb5a8;         /* texto secundário */
+      --neon:#05ff7b;          /* verde neon principal */
+      --accent:#4dd5ff;        /* azul elétrico */
+      --purple:#8a5cff;        /* roxo de acento */
+      --card:linear-gradient(180deg, #0f1418 0%, #0b0e11 100%);
+      --radius:18px;
+      --shadow:0 10px 30px rgba(5,255,123,.12), inset 0 0 0 1px rgba(255,255,255,.04);
+      --grid-gap: clamp(16px, 2vw, 28px);
     }
-    header {
-      text-align: center;
-      padding: 60px 20px 40px;
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji";
+      background: radial-gradient(1200px 600px at 70% -10%, rgba(77,213,255,.08), transparent 60%),
+                  radial-gradient(900px 500px at 10% 0%, rgba(5,255,123,.08), transparent 45%),
+                  var(--bg);
+      color:var(--text);
+      line-height:1.6;
     }
-    header h1 {
-      font-size: 2.2rem;
-      color: #FFD700;
-      text-transform: uppercase;
-      margin-bottom: 20px;
+    a{color:var(--neon); text-decoration:none}
+    img{max-width:100%; display:block}
+
+    /* Header */
+    header{
+      position:sticky; top:0; z-index:50; backdrop-filter:saturate(160%) blur(10px);
+      background:linear-gradient(180deg, rgba(10,13,15,.9) 0%, rgba(10,13,15,.5) 100%);
+      border-bottom:1px solid rgba(255,255,255,.06);
     }
-    header img {
-      max-width: 250px;
-      margin: 30px 0;
+    .nav{max-width:1200px; margin:0 auto; padding:12px 20px; display:flex; align-items:center; justify-content:space-between}
+    .brand{display:flex; align-items:center; gap:12px}
+    .logo{
+      width:34px; height:34px; border-radius:10px; position:relative; flex-shrink:0;
+      background:radial-gradient(circle at 30% 30%, var(--neon), #00c25a 60%, #007a3a 100%);
+      box-shadow:0 0 12px rgba(5,255,123,.6), inset 0 0 18px rgba(0,0,0,.6);
     }
-    section {
-      max-width: 700px;
-      margin: 0 auto;
-      padding: 20px;
-      text-align: center;
+    .brand h1{font:800 18px/1 Orbitron, Inter, sans-serif; letter-spacing:.6px; margin:0}
+    .nav a.btn{padding:10px 16px; border-radius:12px; background:linear-gradient(90deg, var(--neon), #28ffa0);
+      color:#00140a; font-weight:800; text-transform:uppercase; letter-spacing:.6px; box-shadow:0 0 24px rgba(5,255,123,.35);}
+    .nav a.btn:hover{transform:translateY(-1px)}
+
+    /* Sections */
+    section{padding: clamp(56px, 8vw, 100px) 20px}
+    .container{max-width:1200px; margin:0 auto}
+    .grid{display:grid; gap:var(--grid-gap)}
+
+    /* Hero */
+    .hero{display:grid; grid-template-columns: 1.1fr .9fr; gap:var(--grid-gap); align-items:center}
+    .kicker{color:var(--accent); font-weight:700; text-transform:uppercase; letter-spacing:.12em; font-size:12px}
+    .title{font:800 clamp(28px, 4vw, 56px)/1.1 Orbitron, Inter, sans-serif; margin:.3em 0}
+    .subtitle{color:var(--muted); font-size: clamp(16px,1.6vw,19px)}
+    .cta-row{display:flex; gap:12px; flex-wrap:wrap; margin-top:22px}
+    .btn{display:inline-flex; align-items:center; gap:10px; padding:14px 18px; border-radius:14px; font-weight:800; text-transform:uppercase; letter-spacing:.06em}
+    .btn-primary{background:linear-gradient(90deg, var(--neon), #28ffa0); color:#04110a; box-shadow:0 10px 30px rgba(5,255,123,.25)}
+    .btn-ghost{border:1px solid rgba(255,255,255,.12); color:var(--text); background:rgba(255,255,255,.02)}
+
+    .panel{
+      background: var(--card); border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow);
+      position:relative; overflow:hidden
     }
-    .form-section input[type="email"] {
-      width: 90%;
-      max-width: 500px;
-      padding: 15px;
-      font-size: 1rem;
-      border: none;
-      border-radius: 8px;
-      margin: 20px 0;
+    .panel::after{content:""; position:absolute; inset:-1px; pointer-events:none; border-radius:inherit;
+      background: radial-gradient(400px 200px at 0% 0%, rgba(77,213,255,.15), transparent 40%),
+                  radial-gradient(300px 160px at 100% 100%, rgba(5,255,123,.12), transparent 40%);
+      mask: linear-gradient(#000, transparent 65%);
     }
-    .cta-btn {
-      display: inline-block;
-      background: linear-gradient(90deg, #FFD700, #ffae00);
-      color: #0b0b0b;
-      font-weight: 700;
-      padding: 15px 40px;
-      border-radius: 10px;
-      text-decoration: none;
-      text-transform: uppercase;
-      transition: 0.3s;
+
+    .video-wrap{aspect-ratio:16/9; border-radius:14px; overflow:hidden; border:1px solid rgba(255,255,255,.08); position:relative}
+    .powered{position:absolute; right:10px; bottom:10px; font-size:12px; color:#bfffe0; background:rgba(5,255,123,.12);
+      padding:6px 10px; border:1px solid rgba(5,255,123,.35); border-radius:999px}
+
+    /* Pain */
+    .cards{display:grid; grid-template-columns:repeat(4,1fr); gap:var(--grid-gap)}
+    .card{background: var(--card); border-radius: var(--radius); padding:22px; box-shadow: var(--shadow)}
+    .card h4{margin:8px 0 0; font-weight:700}
+    .icon{width:34px; height:34px; border-radius:10px; display:grid; place-items:center; background:rgba(5,255,123,.1); border:1px solid rgba(5,255,123,.35)}
+
+    /* Solution */
+    .benefits{display:grid; grid-template-columns: repeat(2, 1fr); gap:var(--grid-gap)}
+    .benefit{display:flex; gap:14px; padding:16px; border:1px solid rgba(255,255,255,.06); border-radius:14px; background:rgba(255,255,255,.02)}
+
+    /* Social Proof */
+    .testimonials{display:grid; grid-template-columns: repeat(3, 1fr); gap:var(--grid-gap)}
+    .quote{background: var(--card); border-radius: var(--radius); padding:22px; box-shadow: var(--shadow)}
+    .quote .who{opacity:.8; font-size:14px}
+
+    /* How it works */
+    .steps{display:grid; grid-template-columns:repeat(4,1fr); gap:var(--grid-gap)}
+    .step{background: var(--card); border-radius: var(--radius); padding:22px; box-shadow: var(--shadow); position:relative}
+    .step .badge{position:absolute; top:14px; right:14px; font:800 12px/1 Inter; color:#00140a; background:var(--neon); border-radius:999px; padding:6px 10px}
+
+    /* FAQ */
+    details{border:1px solid rgba(255,255,255,.08); border-radius:14px; padding:16px 18px; background:rgba(255,255,255,.02)}
+    details+details{margin-top:12px}
+    summary{cursor:pointer; font-weight:700}
+
+    /* Lead form */
+    .lead{
+      background:linear-gradient(180deg, rgba(5,255,123,.06), transparent), var(--bg-2);
+      border:1px solid rgba(5,255,123,.25); box-shadow: var(--shadow);
     }
-    .cta-btn:hover {
-      background: #ffcc00;
-      transform: scale(1.05);
+    .lead form{display:grid; grid-template-columns: 1fr 1fr; gap:12px}
+    .lead input,.lead textarea{
+      background:#0b1013; color:var(--text); border:1px solid rgba(255,255,255,.12); border-radius:12px; padding:12px 14px; font:600 14px Inter;
     }
-    .kit-section {
-      background: #111;
-      padding: 50px 20px;
-      margin-top: 50px;
+    .lead textarea{grid-column:1/-1; min-height:110px; resize:vertical}
+
+    /* CTA FINAL */
+    .cta-final{display:grid; place-items:center; text-align:center; gap:12px}
+
+    /* Footer */
+    footer{border-top:1px solid rgba(255,255,255,.08); padding:28px 20px; color:var(--muted)}
+
+    /* Responsive */
+    @media (max-width: 1024px){
+      .hero{grid-template-columns: 1fr}
+      .cards{grid-template-columns: 1fr 1fr}
+      .benefits{grid-template-columns: 1fr}
+      .testimonials{grid-template-columns: 1fr}
+      .steps{grid-template-columns: 1fr 1fr}
+      .lead form{grid-template-columns:1fr}
     }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 30px;
+    @media (max-width: 560px){
+      .cards{grid-template-columns: 1fr}
     }
-    th, td {
-      border: 1px solid #333;
-      padding: 12px;
-    }
-    th {
-      background: #222;
-      color: #FFD700;
-    }
-    footer {
-      text-align: center;
-      padding: 30px;
-      background: #080808;
-      color: #999;
-      font-size: 0.9rem;
-    }
+
+    /* Reveal on scroll */
+    [data-reveal]{opacity:0; transform: translateY(14px); transition: .6s ease}
+    [data-reveal].visible{opacity:1; transform:none}
   </style>
 </head>
 <body>
-
+  <!-- Header -->
   <header>
-    <h1>ACESSO LIBERADO: A ARQUITETURA PROATIVA DE OTIMIZAÇÃO Wi-Fi</h1>
-    <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYWRsdjU4bTVmYWQzYmpyZ2lsazN2bTdnd3NjYTh2a3hmb3U1eTF3YiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/NsBkn6W9Kj5EA/giphy.gif" alt="gráfico subindo">
-    <p>Você está a um passo de entender o segredo das redes que nunca falham.</p>
-    <p>Se você comentou "WI-FI" e repostou nossa publicação, você provou que está pronto para o 1% de gerenciamento inteligente.</p>
-    <p>O que a maioria das empresas paga para ter, você está recebendo primeiro: a lógica por trás da queda de 95% nos chamados de suporte por lentidão.</p>
+    <nav class="nav">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <h1>Okamoto Security Labs</h1>
+      </div>
+      <div>
+        <a href="#lead-form" class="btn btn-primary">Quero Conexão Impecável</a>
+      </div>
+    </nav>
   </header>
 
-  <section class="form-section">
-    <h2>🔒 Desbloqueie o Conteúdo Exclusivo Agora:</h2>
-    <p>O Repositório e o Guia Rápido serão enviados para o seu e-mail imediatamente após o cadastro.</p>
-
-    <form id="lead-form" action="https://formspree.io/f/xnnggkna" method="POST">
-      <input type="email" name="email" placeholder="Seu melhor e-mail" required>
-      <input type="hidden" name="_subject" value="Novo lead: Arquitetura Wi‑Fi Pro">
-      <br>
-      <button type="submit" class="cta-btn">Quero o acesso completo à arquitetura!</button>
-      <p id="form-note" style="font-size:0.9rem;color:#aaa;margin-top:10px;">Ao enviar, você receberá o link do repositório e o PDF por e‑mail.</p>
-    </form>
-
-    <script>
-      // ---- CONFIGURE AQUI seus links reais ----
-      const REPO_URL = "https://github.com/gustavo89587/wifi-pro"; // 👉 troque pelo repo correto
-      const PDF_URL  = "https://raw.githubusercontent.com/gustavo89587/wifi-pro/refs/heads/main/docs/guia-rapido-wifi-pro.pdf"; // 👉 troque se necessário
-      const CALL_URL = "https://calendly.com"; // 👉 opcional
-      // ----------------------------------------
-
-      (function(){
-        const form = document.getElementById('lead-form');
-        if(!form) return;
-        const note = document.getElementById('form-note');
-
-        form.addEventListener('submit', async function(e){
-          e.preventDefault();
-          const btn = form.querySelector('button');
-          btn.disabled = true; btn.textContent = 'Enviando...';
-          const data = new FormData(form);
-          try {
-            const res = await fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' }});
-            let payload = null; try { payload = await res.json(); } catch(_){ }
-            if (res.ok) {
-              form.outerHTML = `
-                <div class="success-card" style="background:#0f0f0f;border:1px solid #1f1f1f;border-radius:12px;padding:24px;">
-                  <h3 style="margin-top:0;color:#FFD700;">✅ Acesso enviado para o seu e‑mail!</h3>
-                  <p>Enquanto isso, você já pode abrir os materiais abaixo:</p>
-                  <p style="margin:.6rem 0"><a href="${REPO_URL}" target="_blank" style="color:#FFD700;text-decoration:none;">🔗 Repositório no GitHub</a></p>
-                  <p style="margin:.6rem 0"><a href="${PDF_URL}" target="_blank" style="color:#FFD700;text-decoration:none;">📄 Guia de Aplicação (PDF)</a></p>
-                  ${CALL_URL ? `<p style=\"margin:.6rem 0\"><a href=\"${CALL_URL}\" target=\"_blank\" style=\"color:#FFD700;text-decoration:none;\">📅 Agendar call de 15 minutos</a></p>` : ''}
-                  <p style="color:#aaa;font-size:.9rem;margin-top:12px;">Dica: dê ⭐ no repositório para acompanhar atualizações.</p>
-                </div>`;
-            } else {
-              btn.disabled = false; btn.textContent = 'Quero o acesso completo à arquitetura!';
-              let msg = 'Não foi possível enviar. Tente novamente em instantes.';
-              if (payload && payload.errors && payload.errors.length) msg = payload.errors.map(e => e.message).join(' | ');
-              if (res.status === 403) msg = '403 - Confirme o formulário no Formspree e verifique o endpoint.';
-              if (res.status === 404) msg = '404 - Endpoint do Formspree inválido.';
-              if (note) { note.textContent = msg; note.style.color = '#ff6868'; }
-              console.error('Form error', res.status, payload);
-            }
-          } catch (err) {
-            btn.disabled = false; btn.textContent = 'Quero o acesso completo à arquitetura!';
-            if (note) { note.textContent = 'Falha de rede. Verifique sua conexão e tente novamente.'; note.style.color = '#ff6868'; }
-            console.error('Network error', err);
-          }
-        });
-
-        // Verificação visual rápida dos links (mostra uma badge se estiverem configurados)
-        window.addEventListener('DOMContentLoaded', () => {
-          const okRepo = REPO_URL && REPO_URL.startsWith('http');
-          const okPdf  = PDF_URL && PDF_URL.startsWith('http');
-          const badge = document.createElement('div');
-          badge.style.cssText = 'margin-top:10px;font-size:.9rem;color:#aaa';
-          badge.innerHTML = `Links: Repo ${okRepo ? '✅' : '❌'} • PDF ${okPdf ? '✅' : '❌'}`;
-          form.appendChild(badge);
-        });
-      })();
-    </script>
+  <!-- Hero -->
+  <section class="container" id="hero">
+    <div class="hero">
+      <div>
+        <div class="kicker">WIFI PRO • Estabilidade • Velocidade • Segurança</div>
+        <h2 class="title">Chega de Wi‑Fi Lento! Liberte‑se das Falhas e Gargalos <span style="color:var(--neon)">AGORA</span>.</h2>
+        <p class="subtitle">Sua produtividade e entretenimento merecem uma conexão impecável. Descubra a velocidade e estabilidade que você nunca imaginou — com a expertise <strong>Okamoto Security Labs</strong>.</p>
+        <div class="cta-row">
+          <a href="#lead-form" class="btn btn-primary">Quero uma conexão impecável agora</a>
+          <a href="#como-funciona" class="btn btn-ghost">Como funciona</a>
+        </div>
+        <p style="margin-top:10px; font-size:13px; color:#bfffe0">Powered by Okamoto Security Labs</p>
+      </div>
+      <div class="panel" data-reveal>
+        <div class="video-wrap">
+          <!-- Substitua o src abaixo pelo seu vídeo IA hospedado (ex.: GitHub, Cloudflare Stream, etc.) -->
+          <video src="https://cdn.coverr.co/videos/coverr-green-binary-code-6397/1080p.mp4" autoplay muted loop playsinline poster="" style="width:100%; height:100%; object-fit:cover"></video>
+          <span class="powered">WIFI PRO • IA</span>
+        </div>
+        <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-top:12px">
+          <div class="benefit"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 12C7 8 17 8 21 12" stroke="var(--neon)" stroke-width="2" stroke-linecap="round"/><path d="M6 15C9 12 15 12 18 15" stroke="var(--neon)" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="18" r="1.6" fill="var(--neon)"/></svg><span>Estabilidade</span></div>
+          <div class="benefit"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 12h5l2-7 4 14 2-7h5" stroke="var(--neon)" stroke-width="2" stroke-linecap="round"/></svg><span>Velocidade</span></div>
+          <div class="benefit"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="8" width="18" height="12" rx="2" stroke="var(--neon)" stroke-width="2"/><path d="M7 8V6a5 5 0 0 1 10 0v2" stroke="var(--neon)" stroke-width="2"/></svg><span>Segurança</span></div>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <section class="kit-section">
-    <h2>🎁 Seu Kit de Diagnóstico Proativo Contém:</h2>
-    <table>
-      <tr>
-        <th>O Item</th>
-        <th>O Valor Real</th>
-      </tr>
-      <tr>
-        <td>Acesso ao Repositório no GitHub</td>
-        <td>A prova de conceito — veja as funções de otimização e a arquitetura que reduziram a latência de 120ms para 8ms.</td>
-      </tr>
-      <tr>
-        <td>Guia de Aplicação (PDF Rápido)</td>
-        <td>Tradução do código em valor de negócio. Aprenda os 3 princípios de gerenciamento que separam o Wi-Fi médio do de alta performance.</td>
-      </tr>
-      <tr>
-        <td>Convite Exclusivo para Conversa</td>
-        <td>Agende uma call de 15 minutos para entender seu problema e te mostrar o futuro do SaaS.</td>
-      </tr>
-    </table>
+  <!-- Dor -->
+  <section class="container" id="dor">
+    <h3 class="title" style="font-size:clamp(22px,3vw,36px)">Você se identifica com algum destes cenários?</h3>
+    <div class="cards" data-reveal>
+      <div class="card"><div class="icon">📶</div><h4>Wi‑Fi que cai a toda hora?</h4></div>
+      <div class="card"><div class="icon">🐢</div><h4>Navegação e downloads que parecem tortura?</h4></div>
+      <div class="card"><div class="icon">⚔️</div><h4>Dispositivos disputando a mesma conexão?</h4></div>
+      <div class="card"><div class="icon">🛡️</div><h4>Preocupação com a segurança da sua rede?</h4></div>
+    </div>
+    <p style="color:var(--muted); max-width:820px; margin-top:16px">Sabemos o quão frustrante é ter uma internet que não acompanha seu ritmo. Cada falha é tempo perdido, produtividade comprometida e entretenimento interrompido.</p>
   </section>
 
-  <footer>
-    <p>© 2025 Gustavo Okamoto — Okamoto Security Labs | Wi-Fi Pro</p>
+  <!-- Solução -->
+  <section class="container" id="solucao">
+    <div class="grid" style="grid-template-columns: .9fr 1.1fr; align-items:center">
+      <div class="panel" data-reveal>
+        <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=1200&auto=format&fit=crop" alt="Sinal Wi‑Fi futurista" style="border-radius:14px; border:1px solid rgba(255,255,255,.08)">
+      </div>
+      <div>
+        <h3 class="title" style="font-size:clamp(22px,3vw,36px)">Apresentando o <span style="color:var(--neon)">WIFI PRO</span>: a revolução da sua conexão.</h3>
+        <div class="benefits" style="margin-top:10px">
+          <div class="benefit"><span>⚡</span><div><strong>Velocidade Incomparável</strong><br>Streaming 4K, jogos online e reuniões sem travar.</div></div>
+          <div class="benefit"><span>🧱</span><div><strong>Estabilidade Absoluta</strong><br>Conexão sólida, adeus quedas e interrupções.</div></div>
+          <div class="benefit"><span>🚀</span><div><strong>Adeus aos Gargalos</strong><br>Otimização inteligente de tráfego para todos os dispositivos.</div></div>
+          <div class="benefit"><span>🛡️</span><div><strong>Segurança Ciber‑Nível</strong><br>Proteção Okamoto Security Labs, seus dados sempre seguros.</div></div>
+          <div class="benefit" style="grid-column:1/-1"><span>🌐</span><div><strong>Cobertura Total</strong><br>Sinal forte em cada canto da casa ou escritório.</div></div>
+        </div>
+        <p style="color:var(--muted); margin-top:12px">Imagine tarefas fluindo, filmes sem pausas e jogos sem lag. Essa é a liberdade que o WIFI PRO oferece.</p>
+        <div class="cta-row"><a href="#lead-form" class="btn btn-primary">Quero experimentar</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Prova Social -->
+  <section class="container" id="prova">
+    <h3 class="title" style="font-size:clamp(22px,3vw,36px)">Quem já experimentou, não troca mais!</h3>
+    <div class="testimonials" data-reveal>
+      <div class="quote">“Antes, minha empresa perdia horas com rede. Com o WIFI PRO, a produtividade disparou. Incrível!”<div class="who">— Ana C., Empresária</div></div>
+      <div class="quote">“Finalmente um Wi‑Fi que funciona de verdade. Jogo online sem lag e streaming 4K perfeito.”<div class="who">— Marcos F., Gamer</div></div>
+      <div class="quote">“A Okamoto Security Labs entregou segurança e velocidade impecáveis.”<div class="who">— Dra. Lúcia M., Profissional Liberal</div></div>
+    </div>
+  </section>
+
+  <!-- Como funciona -->
+  <section class="container" id="como-funciona">
+    <h3 class="title" style="font-size:clamp(22px,3vw,36px)">Simples, Rápido e Eficaz.</h3>
+    <div class="steps" data-reveal>
+      <div class="step"><span class="badge">1</span><div class="icon">📞</div><h4>Entre em Contato</h4><p>Entendemos sua necessidade e contexto.</p></div>
+      <div class="step"><span class="badge">2</span><div class="icon">🔍</div><h4>Análise Personalizada</h4><p>Mapeamos os pontos críticos da sua rede.</p></div>
+      <div class="step"><span class="badge">3</span><div class="icon">⚙️</div><h4>Instalação & Otimização</h4><p>Configuramos o WIFI PRO para alta performance.</p></div>
+      <div class="step"><span class="badge">4</span><div class="icon">🚀</div><h4>Desfrute da Velocidade</h4><p>Conexão pronta para revolucionar sua rotina.</p></div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="container" id="faq">
+    <h3 class="title" style="font-size:clamp(22px,3vw,36px)">FAQ — Perguntas Frequentes</h3>
+    <div class="grid" style="grid-template-columns: 1fr 1fr; gap:var(--grid-gap)" data-reveal>
+      <div>
+        <details><summary>É compatível com meu provedor atual?</summary><p>Sim. O WIFI PRO otimiza sua rede local e funciona com qualquer provedor (ISP).</p></details>
+        <details><summary>Qual o tempo de instalação?</summary><p>Em média, 60–120 minutos após a análise.</p></details>
+        <details><summary>Funciona para empresas e residências?</summary><p>Sim, com planos dimensionados para cada cenário.</p></details>
+      </div>
+      <div>
+        <details><summary>Vocês oferecem suporte?</summary><p>Sim, suporte remoto e orientações pós-instalação.</p></details>
+        <details><summary>Preciso trocar meu roteador?</summary><p>Nem sempre. Avaliamos seu equipamento e recomendamos apenas se houver ganho real.</p></details>
+        <details><summary>E a segurança da rede?</summary><p>Hardening, segmentação e boas práticas de cibersegurança by Okamoto Security Labs.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lead Form / Oferta -->
+  <section class="container panel lead" id="lead-form" data-reveal>
+    <div class="grid" style="grid-template-columns: .9fr 1.1fr; align-items:center">
+      <div>
+        <h3 class="title" style="font-size:clamp(22px,3vw,36px)">Oferta Especial: Análise Gratuita</h3>
+        <p style="color:var(--muted)">Por tempo limitado. Descubra como elevar sua velocidade, estabilidade e segurança.</p>
+      </div>
+      <form action="https://formspree.io/f/xnnggkna" method="POST">
+        <input type="text" name="nome" placeholder="Seu nome" required>
+        <input type="email" name="email" placeholder="Seu e‑mail" required>
+        <input type="tel" name="whatsapp" placeholder="WhatsApp (opcional)">
+        <textarea name="mensagem" placeholder="Descreva seu problema de Wi‑Fi"></textarea>
+        <button class="btn btn-primary" type="submit">Quero minha conexão perfeita</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- CTA Final -->
+  <section class="container cta-final" data-reveal>
+    <h3 class="title" style="font-size:clamp(22px,3vw,36px)">Não perca mais tempo com a lentidão!</h3>
+    <p style="max-width:720px; color:var(--muted)">Cada segundo de espera é um segundo de produtividade perdida e frustração. Faça o upgrade agora.</p>
+    <a href="#lead-form" class="btn btn-primary">Solicitar Análise</a>
+  </section>
+
+  <footer class="container" role="contentinfo">
+    <div style="display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap">
+      <div style="display:flex; align-items:center; gap:10px">
+        <div class="logo" aria-hidden="true"></div>
+        <strong>Okamoto Security Labs</strong>
+      </div>
+      <div style="display:flex; gap:14px; flex-wrap:wrap">
+        <a href="#">Política de Privacidade</a>
+        <a href="#">Termos de Uso</a>
+        <a href="#">LinkedIn</a>
+        <a href="#">Instagram</a>
+      </div>
+    </div>
+    <p style="margin:10px 0 0; font-size:13px">© <span id="yr"></span> Okamoto Security Labs — A Inteligência que Protege.</p>
   </footer>
 
+  <script>
+    // Ano no footer
+    document.getElementById('yr').textContent = new Date().getFullYear();
+
+    // Reveal simples ao rolar
+    const els = document.querySelectorAll('[data-reveal]');
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); } });
+    }, {threshold:.12});
+    els.forEach(el=>io.observe(el));
+  </script>
 </body>
 </html>
