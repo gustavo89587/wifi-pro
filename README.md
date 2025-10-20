@@ -1,5 +1,12 @@
 # Reparador de Wi‑Fi — Automático (PoC)
 
+## Direitos Autorais e Licença
+
+Este projeto é protegido por direitos autorais ©Okamoto Security Labs, 2025.  
+
+Qualquer uso não autorizado, reprodução ou distribuição é estritamente proibido.
+
+
 ![Okamoto Security Labs](https://img.shields.io/badge/Okamoto%20Security%20Labs-WiFi%20Pro-0b0b0b?style=flat&labelColor=0b0b0b&color=D4AF37)
 ![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue)
 ![License MIT](https://img.shields.io/badge/license-MIT-green)
